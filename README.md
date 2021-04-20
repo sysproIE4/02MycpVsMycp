@@ -25,7 +25,7 @@ mycp2_1024 ： バッファサイズ1024バイトで低水準I/Oを使用
    2621440 bytes transferred in 0.029957 secs (87506596 bytes/sec)
    $ ls -l aaa
    -rw-r--r--  1 sigemura  staff   2621440 Apr 15 17:35 aaa  <-- できている
-   $ /usr/bin/time -p ./mycp2_1024 aaa bbb
+   $ /usr/bin/time -p ./mycp2_1024 aaa bbb <-- 時間を計りながら実行する
    real     0.13
    user     0.00
    sys      0.02

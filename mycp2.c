@@ -3,8 +3,8 @@
 #include <fcntl.h>                 // open のため
 #include <unistd.h>                // read,write,close のため
 
-//#define  BSIZ 1                    // !!バッファサイズ：変化させ性能を調べる!!
-#define  BSIZ 1024                 // !!バッファサイズ：変化させ性能を調べる!!
+#define  BSIZ 1                    // !!バッファサイズ：変化させ性能を調べる!!
+//#define  BSIZ 1024                 // !!バッファサイズ：変化させ性能を調べる!!
 
 int main(int argc, char *argv[]) {
   int fd1;                         // コピー元用のFD
