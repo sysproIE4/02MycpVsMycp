@@ -4,8 +4,8 @@
 // err_exit : ファイルのオープンに失敗したときエラーメッセージを表示し終了
 void err_exit(char *prog, char *fname) {
     fprintf(stderr,                            // 標準エラー出力に
-	    "%s : can't open %s\n",            // エラーメッセージを表示し
-	    prog, fname);
+            "%s : can't open %s\n",            // エラーメッセージを表示し
+            prog, fname);
     exit(1);                                   // エラー終了
 }
 
@@ -16,8 +16,8 @@ int main(int argc, char *argv[]) {
 
   if (argc != 3) {                             // 引数の個数が予定と異なる
     fprintf(stderr,                            // 標準エラー出力に
-	    "Usage: %s <srcfile> <dstfile>\n", // 使用方法を表示して
-	    argv[0]);
+            "Usage: %s <srcfile> <dstfile>\n", // 使用方法を表示して
+            argv[0]);
     exit(1);                                   // エラー終了
   }
 
