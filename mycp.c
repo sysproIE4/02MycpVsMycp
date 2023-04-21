@@ -3,10 +3,9 @@
 
 // err_exit : ファイルのオープンに失敗したときエラーメッセージを表示し終了
 void err_exit(char *prog, char *fname) {
-    fprintf(stderr,                            // 標準エラー出力に
-            "%s : can't open %s\n",            // エラーメッセージを表示し
-            prog, fname);
-    exit(1);                                   // エラー終了
+  fprintf(stderr, "%s : can't open %s\n",      // 標準エラー出力に
+          prog, fname);                        // エラーメッセージを表示し
+  exit(1);                                     // エラー終了
 }
 
 int main(int argc, char *argv[]) {
@@ -21,11 +20,13 @@ int main(int argc, char *argv[]) {
     exit(1);                                   // エラー終了
   }
 
-  if ((fps = fopen(argv[1], "rb"))==NULL)      // コピー元のオープン失敗
+  if ((fps = fopen(argv[1], "rb"))==NULL) {    // コピー元のオープン失敗
     err_exit(argv[0], argv[1]);
+  }
 
-  if ((fpd = fopen(argv[2], "wb"))==NULL)      // コピー元のオープン失敗
+  if ((fpd = fopen(argv[2], "wb"))==NULL) {    // コピー先のオープン失敗
     err_exit(argv[0], argv[2]);
+  }
 
   while((ch=getc(fps)) != EOF) {               // EOF になるまで
     putc(ch ,fpd);                             // 1バイト毎のコピー

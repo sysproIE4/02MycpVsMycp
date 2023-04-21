@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 （例１：MacBook Air 2019，例２：HP ENVY x360，例３：徳山高専VDI）
 
 実行したコンピュータのOS：
-（例１：macOS 11，例２：Windows10，例３：Ubuntu Linux）
+（例１：macOS 13，例２：Windows10，例３：Ubuntu Linux）
 
 ファイルサイズ：
 
