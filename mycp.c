@@ -1,39 +1,32 @@
-#include <stdio.h>                             // 入出力のために必要
-#include <stdlib.h>                            // exit のために必要
-
-// err_exit : ファイルのオープンに失敗したときエラーメッセージを表示し終了
-void err_exit(char *prog, char *fname) {
-  fprintf(stderr, "%s : can't open %s\n",      // 標準エラー出力に
-          prog, fname);                        // エラーメッセージを表示し
-  exit(1);                                     // エラー終了
-}
+#include <stdio.h>  // fopen, fprintf, perror, fgetc, fputc などのため
 
 int main(int argc, char *argv[]) {
-  FILE *fps;                                   // コピー元ファイル用
-  FILE *fpd;                                   // コピー先ファイル用
-  int  ch;                                     // コピー時使用
+  FILE *fps;                                          // コピー元ファイル用
+  FILE *fpd;                                          // コピー先ファイル用
+  int  ch;                                            // コピー時に使用
 
-  if (argc != 3) {                             // 引数の個数が予定と異なる
-    fprintf(stderr,                            // 標準エラー出力に
-            "Usage: %s <srcfile> <dstfile>\n", // 使用方法を表示して
-            argv[0]);
-    exit(1);                                   // エラー終了
+  if (argc != 3) {                                    // 引数の数が予定と異なる
+    fprintf(stderr,                                   // 標準エラー出力に
+            "Usage: %s srcfile destfile\n", argv[0]); //  使用方法を表示して
+    return 1;                                         //  エラー終了
   }
 
-  if ((fps = fopen(argv[1], "rb"))==NULL) {    // コピー元のオープン失敗
-    err_exit(argv[0], argv[1]);
+  if ((fps = fopen(argv[1], "rb")) == NULL) {         // コピー元ファイルを開く
+    perror(argv[1]);                                  // エラー原因を表示
+    return 1;                                         //  エラー終了
   }
 
-  if ((fpd = fopen(argv[2], "wb"))==NULL) {    // コピー先のオープン失敗
-    err_exit(argv[0], argv[2]);
+  if ((fpd = fopen(argv[2], "wb")) == NULL) {         // コピー先ファイルを開く
+    perror(argv[2]);                                  // エラー原因を表示
+    return 1;                                         //  エラー終了
   }
 
-  while((ch=getc(fps)) != EOF) {               // EOF になるまで
-    putc(ch ,fpd);                             // 1バイト毎のコピー
+  while ((ch=getc(fps)) != EOF) {                     // EOF になるまで
+    putc(ch, fpd);                                    //  1バイト毎にコピーする
   }
 
-  fclose(fps);                                 // ファイルクローズ
+  fclose(fps);                                        // ファイルを閉じる
   fclose(fpd);
 
-  return 0;                                    // 正常終了
+  return 0;                                          // 正常終了
 }
